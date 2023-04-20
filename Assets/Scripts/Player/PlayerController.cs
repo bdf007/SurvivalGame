@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     private Vector2 curMovementInput;
+    public float jumpForce;
+    public LayerMask groundLayerMask;
 
     [Header("Look")]
     public Transform cameraContainer;
@@ -85,16 +87,60 @@ public class PlayerController : MonoBehaviour
     public void OnMoveInput(InputAction.CallbackContext context)
     {
         // are we holding down a movement button?
-        if (context.performed)
+        if (context.phase == InputActionPhase.Performed)
         {
             // get the movement input
             curMovementInput = context.ReadValue<Vector2>();
         }
         // are we releasing a movement button?
-        else if (context.canceled)
+        else if (context.phase == InputActionPhase.Canceled)
         {
             // reset the movement input
             curMovementInput = Vector2.zero;
         }
+    }
+
+    // called when we press down on the spacebar - managed by the Input System
+    public void OnJumpInput(InputAction.CallbackContext context)
+    {
+        // is this the first frame we're pressing the button?
+        if (context.phase == InputActionPhase.Started)
+        {
+            // are we grounded?
+            if (IsGrounded())
+            {
+                // jump
+                playerRig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+        }
+    }
+
+    bool IsGrounded()
+    {
+        Ray[] rays = new Ray[4]
+        {
+            new Ray(transform.position + (transform.forward * 0.2f) + (Vector3.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * 0.2f) + (Vector3.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (transform.right * 0.2f) + (Vector3.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.right * 0.2f) + (Vector3.up * 0.01f), Vector3.down)
+        };
+        for(int i = 0; i < rays.Length; i++)
+        {
+            if (Physics.Raycast(rays[i], 0.1f, groundLayerMask))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // show the ray in the editor
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position + (transform.forward * 0.2f) + (Vector3.up * 0.01f), Vector3.down);
+        Gizmos.DrawRay(transform.position + (-transform.forward * 0.2f) + (Vector3.up * 0.01f), Vector3.down);
+        Gizmos.DrawRay(transform.position + (transform.right * 0.2f) + (Vector3.up * 0.01f), Vector3.down);
+        Gizmos.DrawRay(transform.position + (-transform.right * 0.2f) + (Vector3.up * 0.01f), Vector3.down);
     }
 }
