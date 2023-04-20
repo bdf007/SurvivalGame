@@ -14,6 +14,13 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 mousDelta;
 
+    private void Start()
+    {
+        // lock the cursor to the center of the screen
+        Cursor.lockState = CursorLockMode.Locked;
+
+    }
+
     private void LateUpdate()
     {
         CameraLook();
