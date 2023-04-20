@@ -155,6 +155,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c29be02f1597c4d92a61ec80e7ef8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraContainer: {fileID: 1091327374}
+  minXLook: -35
+  maxXLook: 35
+  lookSensitivity: 0.2
+  invertY: 0
 --- !u!54 &120692993
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -255,7 +260,19 @@ MonoBehaviour:
     m_ActionId: 75eb3ed8-ddce-443b-8afc-691e2429a717
     m_ActionName: Main/Interract[/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 120692992}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnLookInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e1e9b474-9ce3-42ee-bd3c-ac278f95f907
     m_ActionName: Main/Look[/Mouse/delta]
   m_NeverAutoSwitchControlSchemes: 0
