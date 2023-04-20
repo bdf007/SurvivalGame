@@ -72,5 +72,9 @@ public class DayNightCycle : MonoBehaviour
         {
             moon.gameObject.SetActive(true);
         }
+
+        // lighting and reflection intensity
+        RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
+        RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
     }
 }
