@@ -503,30 +503,30 @@ MonoBehaviour:
     startValue: 100
     regenRate: 0
     decayRate: 0
-    uiBar: {fileID: 0}
+    uiBar: {fileID: 750300719}
   hunger:
     curValue: 0
     maxValue: 500
     startValue: 300
     regenRate: 0
-    decayRate: 0
-    uiBar: {fileID: 0}
+    decayRate: 2
+    uiBar: {fileID: 1713915418}
   thirst:
     curValue: 0
     maxValue: 500
     startValue: 300
     regenRate: 0
-    decayRate: 0
-    uiBar: {fileID: 0}
+    decayRate: 2
+    uiBar: {fileID: 1858505583}
   sleep:
     curValue: 0
     maxValue: 500
-    startValue: 300
-    regenRate: 0
+    startValue: 100
+    regenRate: 1
     decayRate: 0
-    uiBar: {fileID: 0}
-  noHungerHealthDecay: 0
-  noThirstHealthDecay: 0
+    uiBar: {fileID: 1580291175}
+  noHungerHealthDecay: 1
+  noThirstHealthDecay: 1
 --- !u!1 &142882084
 GameObject:
   m_ObjectHideFlags: 0
