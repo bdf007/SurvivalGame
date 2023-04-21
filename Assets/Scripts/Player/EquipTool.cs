@@ -14,7 +14,7 @@ public class EquipTool : Equip
     public bool doesGatherRessources;
 
     [Header("Combat")]
-    public bool doesDamage;
+    public bool doesDealDamage;
     public int damage;
 
     // components
@@ -42,8 +42,24 @@ public class EquipTool : Equip
         isAttacking = false;
     }
     
+    // called by animation event
     public void Onhit()
     {
-        Debug.Log("hit detected");
+        Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        RaycastHit hit;
+
+        if(Physics.Raycast(ray,out hit, attackDistance))
+        {
+            // if the player is hitting a ressource
+            if (doesGatherRessources && hit.collider.GetComponent<Ressource>())
+            {
+                hit.collider.GetComponent<Ressource>().Gather(hit.point, hit.normal);
+            }
+            // if the player is hitting an enemy
+            if (doesDealDamage && hit.collider.GetComponent<IDamageable>() != null)
+            {
+                hit.collider.GetComponent<IDamageable>().TakePhysicalDamage(damage);
+            }
+        }
     }
 }

@@ -15,17 +15,17 @@ public class Ressource : MonoBehaviour
         // give the player "quantityPerHit" of the resource
         for (int i = 0; i < quantityPerHit; i++)
         {
-            capacity -=1;
             if (capacity <= 0)
             {
                 Destroy(gameObject);
                 break;
             }
+            capacity -=1;
 
             Inventory.instance.AddItem(itemToGive);
         }
 
-        Instantiate(hitParticle, hitPoint, Quaternion.LookRotation(hitNormal, Vector3.up));
+        Destroy(Instantiate(hitParticle, hitPoint, Quaternion.LookRotation(hitNormal, Vector3.up)), 1.0f);
 
         if (capacity <= 0)
         {
