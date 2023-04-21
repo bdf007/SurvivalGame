@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 9157136016480378638}
   - component: {fileID: 2985584250424016002}
   - component: {fileID: 3675171944563386607}
+  - component: {fileID: 2303342418473977411}
   m_Layer: 5
   m_Name: ItemSlot
   m_TagString: Untagged
@@ -303,6 +304,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b381ec391f966c41972d51ed90f7229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 3675171944563386607}
+  icon: {fileID: 4943561415311286104}
+  amountText: {fileID: 8083573149251863416}
+  index: 0
+  equipped: 0
 --- !u!114 &3675171944563386607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,4 +352,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9157136016480378638}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2985584250424016002}
+        m_TargetAssemblyTypeName: ItemSlotUI, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2303342418473977411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9073290825011961745}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1

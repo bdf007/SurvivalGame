@@ -44,7 +44,20 @@ public class Inventory : MonoBehaviour
         playerController = GetComponent<PlayerController>();
     }
 
+    private void Start()
+    {
+        invetoryWindow.SetActive(false);
+        slots = new ItemSlot[uiSlots.Length];
 
+        // initialize the slots
+        for (int i = 0; i < slots.Length; i++)
+        {
+            slots[i] = new ItemSlot();
+            uiSlots[i].index = i;
+            uiSlots[i].Clear();
+        }
+
+    }
 }
 
 public class ItemSlot
