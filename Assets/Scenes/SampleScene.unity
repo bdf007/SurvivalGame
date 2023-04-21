@@ -468,6 +468,7 @@ GameObject:
   - component: {fileID: 120692997}
   - component: {fileID: 120692998}
   - component: {fileID: 120692999}
+  - component: {fileID: 120693000}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -787,6 +788,20 @@ MonoBehaviour:
   onCloseInventory:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &120693000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120692991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b983c64e4949c4292e89d87b4c81f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curEquip: {fileID: 0}
+  equipParent: {fileID: 1705162967}
 --- !u!1001 &132024216
 PrefabInstance:
   m_ObjectHideFlags: 0
