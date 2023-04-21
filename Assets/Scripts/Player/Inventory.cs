@@ -30,6 +30,7 @@ public class Inventory : MonoBehaviour
 
     // components
     private PlayerController playerController;
+    private PlayerNeeds playerNeeds;
 
     [Header("Events")]
     public UnityEvent onOpenInventory;
@@ -42,6 +43,7 @@ public class Inventory : MonoBehaviour
     {
         instance = this; 
         playerController = GetComponent<PlayerController>();
+        playerNeeds = GetComponent<PlayerNeeds>();
     }
 
     private void Start()
@@ -187,7 +189,14 @@ public class Inventory : MonoBehaviour
         selectedItemName.text = selectedItem.item.displayName;
         selectedItemDescription.text = selectedItem.item.description;
 
-        // set stat names and values
+        // set stat names and values"";
+        selectedItemStatNames.text = string.Empty;
+        selectedItemStatValues.text = string.Empty;
+        for(int i = 0; i < selectedItem.item.consumables.Length; i++)
+        {
+            selectedItemStatNames.text += selectedItem.item.consumables[i].type.ToString() + "\n";
+            selectedItemStatValues.text += selectedItem.item.consumables[i].value.ToString() + "\n";
+        }
 
         // enable/disable buttons
         useButton.SetActive(selectedItem.item.type == ItemType.Consumable);
@@ -215,7 +224,30 @@ public class Inventory : MonoBehaviour
 
     public void OnUseButton()
     {
+        if(selectedItem.item.type == ItemType.Consumable)
+        {
+            for(int i = 0; i < selectedItem.item.consumables.Length; i++)
+            {
+                // check the type of the consumable
+                switch (selectedItem.item.consumables[i].type)
+                {
+                    case ConsumableType.Health:
+                        playerNeeds.Heal(selectedItem.item.consumables[i].value);
+                        break;
+                    case ConsumableType.Hunger:
+                        playerNeeds.Eat(selectedItem.item.consumables[i].value);
+                        break;
+                    case ConsumableType.Thirst:
+                        playerNeeds.Drink(selectedItem.item.consumables[i].value);
+                        break;
+                    case ConsumableType.Sleep:
+                        playerNeeds.Sleep(selectedItem.item.consumables[i].value);
+                        break;
 
+                }
+            }
+            RemoveSelectedItem();
+        }
     }
 
     public void OnDropButton()
