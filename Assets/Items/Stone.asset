@@ -16,6 +16,6 @@ MonoBehaviour:
   description: ressource for building
   type: 0
   icon: {fileID: 21300000, guid: 0026a7d9db8c86e49a11a50b70f99bb5, type: 3}
-  dropPrefab: {fileID: 0}
+  dropPrefab: {fileID: 773750847725881354, guid: 117b7be18df490a4ab4dd92cb640d732, type: 3}
   canStack: 1
   maxStackAmount: 20
