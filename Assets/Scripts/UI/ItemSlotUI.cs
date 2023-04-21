@@ -48,6 +48,6 @@ public class ItemSlotUI : MonoBehaviour
 
     public void OnButtonClick()
     {
-
+        Inventory.instance.SelectecItem(index);
     }
 }

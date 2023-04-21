@@ -582,6 +582,7 @@ MonoBehaviour:
   maxXLook: 80
   lookSensitivity: 0.2
   invertY: 0
+  canLook: 1
 --- !u!54 &120692993
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1372,7 +1373,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 243012695}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 120692999}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: OnDropButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &243012695
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -77,12 +77,14 @@ public class Inventory : MonoBehaviour
         {
             invetoryWindow.SetActive(false);
             onCloseInventory.Invoke();
+            playerController.ToggleCursor(false);
         }
         else
         {
             invetoryWindow.SetActive(true);
             onOpenInventory.Invoke();
             ClearSelectedItemWindow();
+            playerController.ToggleCursor(true);
         }
     }
 
@@ -218,7 +220,8 @@ public class Inventory : MonoBehaviour
 
     public void OnDropButton()
     {
-
+        TrowItem(selectedItem.item);
+        RemoveSelectedItem();
     }
 
     public void OnEquipButton()
@@ -238,7 +241,19 @@ public class Inventory : MonoBehaviour
 
     void RemoveSelectedItem ()
     {
+        selectedItem.quantity--;
 
+        if (selectedItem.quantity <= 0)
+        {
+            if (uiSlots[selectedItemIndex].equipped)
+            {
+                UnEquip(selectedItemIndex);
+            }
+            slots[selectedItemIndex].item = null;
+            ClearSelectedItemWindow();
+        }
+
+        UpdateUI();
     }
 
     public void RemoveItem (ItemData item)
