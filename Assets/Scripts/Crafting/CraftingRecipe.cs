@@ -6,7 +6,7 @@ using UnityEngine;
 public class CraftingRecipe : ScriptableObject
 {
     public ItemData itemToCraft;
-    public RessourceCost[] ressourceCosts;
+    public RessourceCost[] costs;
 
 }
 
