@@ -58,6 +58,113 @@ public class Inventory : MonoBehaviour
         }
 
     }
+
+    public void Toggle()
+    {
+
+    }
+
+    public bool IsOpen()
+    {
+        return invetoryWindow.activeInHierarchy;
+    }
+
+    public void AddItem(ItemData item)
+    {
+        if(item.canStack)
+        {
+            ItemSlot slotToStackTo = GetItemStack(item);
+            if(slotToStackTo != null)
+            {
+                slotToStackTo.quantity++;
+                UpdateUI();
+                return;
+            }
+        }
+
+        ItemSlot emptySlot = GetEmptySlot();
+
+        if(emptySlot != null)
+        {
+            emptySlot.item = item;
+            emptySlot.quantity = 1;
+            UpdateUI();
+            return;
+        }
+
+        TrowItem(item);
+    }
+
+    void TrowItem(ItemData item)
+    {
+
+    }
+
+    void UpdateUI()
+    {
+
+    }
+
+    ItemSlot GetItemStack(ItemData item)
+    {
+        return null;
+    }
+
+    ItemSlot GetEmptySlot()
+    {
+        return null;
+    }
+
+    public void SelectecItem()
+    {
+
+    }
+
+    public void ClearSelectedItemWindow()
+    {
+
+    }
+
+    public void OnUseButton()
+    {
+
+    }
+
+    public void OnDropButton()
+    {
+
+    }
+
+    public void OnEquipButton()
+    {
+
+    }
+
+    void UnEquip(int index)
+    {
+
+    }
+
+    public void OnUnEquipButton ()
+    {
+
+    }
+
+    void RemoveSelectedItem ()
+    {
+
+    }
+
+    public void RemoveItem (ItemData item)
+    {
+
+    }
+
+    public bool HasItems (ItemData item, int quantity)
+    {
+        return false;
+    }
+
 }
 
 public class ItemSlot
