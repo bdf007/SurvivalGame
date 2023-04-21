@@ -57,11 +57,33 @@ public class Inventory : MonoBehaviour
             uiSlots[i].Clear();
         }
 
+        ClearSelectedItemWindow();
+
     }
 
+    // called when we give an inventory input - managed by the Input System
+    public void OnInventoryButton(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Started)
+        {
+            Toggle();
+        }
+    }
+
+    // opens or closes the inventory
     public void Toggle()
     {
-
+        if(invetoryWindow.activeInHierarchy)
+        {
+            invetoryWindow.SetActive(false);
+            onCloseInventory.Invoke();
+        }
+        else
+        {
+            invetoryWindow.SetActive(true);
+            onOpenInventory.Invoke();
+            ClearSelectedItemWindow();
+        }
     }
 
     public bool IsOpen()
@@ -148,14 +170,45 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
-    public void SelectecItem()
+    // called when we click on an item slot
+    public void SelectecItem(int index)
     {
+        // we can't select the slot if there's no item
+        if (slots[index].item == null)
+        {
+            return;
+        }
+        // set the selected item preview window
+        selectedItem = slots[index];
+        selectedItemIndex = index;
 
+        selectedItemName.text = selectedItem.item.displayName;
+        selectedItemDescription.text = selectedItem.item.description;
+
+        // set stat names and values
+
+        // enable/disable buttons
+        useButton.SetActive(selectedItem.item.type == ItemType.Consumable);
+        equipButton.SetActive(selectedItem.item.type == ItemType.Equipable && !uiSlots[index].equipped);
+        unEquipButton.SetActive(selectedItem.item.type == ItemType.Equipable && uiSlots[index].equipped);
+        dropButton.SetActive(true);
     }
 
+    // called when the inventory opens or the currently selected item has depleted
     public void ClearSelectedItemWindow()
     {
+        // clear the text
+        selectedItem = null;
+        selectedItemName.text = "";
+        selectedItemDescription.text = "";
+        selectedItemStatNames.text = "";
+        selectedItemStatValues.text = "";
 
+        // disable buttons
+        useButton.SetActive(false);
+        equipButton.SetActive(false);
+        unEquipButton.SetActive(false);
+        dropButton.SetActive(false);
     }
 
     public void OnUseButton()
