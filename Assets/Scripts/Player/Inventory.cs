@@ -258,17 +258,33 @@ public class Inventory : MonoBehaviour
 
     public void OnEquipButton()
     {
+        if (uiSlots[curEquipIndex].equipped)
+        {
+            UnEquip(curEquipIndex);
+        }
 
+        uiSlots[selectedItemIndex].equipped = true;
+        curEquipIndex = selectedItemIndex;
+        EquipManager.instance.EquipNew(selectedItem.item);
+        UpdateUI();
+
+        SelectecItem(selectedItemIndex);
     }
 
     void UnEquip(int index)
     {
-
+        uiSlots[index].equipped = false;
+        EquipManager.instance.UnEquip();
+        UpdateUI();
+        if(selectedItemIndex == index)
+        {
+            SelectecItem(index);
+        }
     }
 
     public void OnUnEquipButton ()
     {
-
+        UnEquip(selectedItemIndex);
     }
 
     void RemoveSelectedItem ()
@@ -290,11 +306,43 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem (ItemData item)
     {
-
+        for(int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].item == item)
+            {
+                slots[i].quantity--;
+                if (slots[i].quantity == 0)
+                {
+                    if (uiSlots[i].equipped == true)
+                    {
+                        UnEquip(i);
+                    }
+                    slots[i].item = null;
+                    ClearSelectedItemWindow();
+                }
+                UpdateUI();
+                return;
+            }
+        }
     }
 
     public bool HasItems (ItemData item, int quantity)
     {
+        int amount = 0;
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].item == item)
+            {
+                amount += slots[i].quantity;
+            }
+
+            if (amount >= quantity)
+            {
+                return true;
+            }
+        }
+
         return false;
     }
 
