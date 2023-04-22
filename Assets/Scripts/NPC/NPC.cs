@@ -41,7 +41,7 @@ public class NPC : MonoBehaviour
     [Header("Combat")]
     public int damage;
     public float attackRate;
-    public float lastAttackTime;
+    private float lastAttackTime;
     public float attackDistance;
 
     private float playerDistance;
@@ -94,6 +94,16 @@ public class NPC : MonoBehaviour
             SetState(AIState.Idle);
             Invoke("WanderToNewLocation", Random.Range(minWanderWaitTime, maxWanderWaitTime));
         }
+
+        if(aiType == AIType.Aggressive && playerDistance < detectDistance)
+        {
+            SetState(AIState.Attacking);
+        }
+        else if(aiType == AIType.Scared && playerDistance < detectDistance)
+        {
+            SetState(AIState.Fleeing);
+        }
+
     }
 
     void AttackingUpdate()
