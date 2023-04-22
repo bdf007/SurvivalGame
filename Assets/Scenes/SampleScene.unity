@@ -10721,8 +10721,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 0
-  fullDayLength: 30
-  startTime: 0.7
+  fullDayLength: 120
+  startTime: 0.25
   noon: {x: 90, y: 0, z: 0}
   sun: {fileID: 705507994}
   sunColor:
@@ -15396,9 +15396,9 @@ MonoBehaviour:
   walkSpeed: 3
   runSpeed: 4
   dropOnDeath: []
-  aiType: 0
+  aiType: 1
   detectDistance: 5
-  safeDistance: 5
+  safeDistance: 8
   minWanderDistance: 2
   maxWanderDistance: 4
   minWanderWaitTime: 1
