@@ -51,4 +51,17 @@ public class NPC : MonoBehaviour
     private Animator anim;
     private SkinnedMeshRenderer[] meshRenderers;
 
+    private void Awake()
+    {
+        //get components
+        agent = GetComponent<NavMeshAgent>();
+        //anim = GetComponentInChildren<Animator>();
+        //meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+    }
+
+    private void Update()
+    {
+        agent.SetDestination(PlayerController.instance.transform.position);
+    }
+
 }
