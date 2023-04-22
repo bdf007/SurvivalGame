@@ -269,7 +269,6 @@ public class Inventory : MonoBehaviour
         UpdateUI();
 
         SelectecItem(selectedItemIndex);
-        //uiSlots[selectedItemIndex].GetComponent<Outline>().enabled = false;
         Toggle();
     }
 
