@@ -17,7 +17,7 @@ public enum AIState
     Attacking,
     Fleeing
 }
-public class NPC : MonoBehaviour
+public class NPC : MonoBehaviour, IDamageable
 {
 
     [Header("stats")]
@@ -56,7 +56,7 @@ public class NPC : MonoBehaviour
         //get components
         agent = GetComponent<NavMeshAgent>();
         //anim = GetComponentInChildren<Animator>();
-        //meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
     }
 
     private void Start()
@@ -195,7 +195,7 @@ public class NPC : MonoBehaviour
         NavMesh.SamplePosition(transform.position + Random.onUnitSphere * safeDistance, out hit, safeDistance, NavMesh.AllAreas);
 
         int i = 0;
-        while (GetDestinationAngle(hit.position) > 60 || playerDistance < safeDistance)
+        while (GetDestinationAngle(hit.position) > 90 || playerDistance < safeDistance)
         {
             NavMesh.SamplePosition(transform.position + Random.onUnitSphere * safeDistance, out hit, safeDistance, NavMesh.AllAreas);
             i++;
@@ -212,4 +212,45 @@ public class NPC : MonoBehaviour
         return Vector3.Angle(transform.position - PlayerController.instance.transform.position, transform.position + targetPos);
     }
 
+    public void TakePhysicalDamage(int damageAmount)
+    {
+        health -= damageAmount;
+
+        if (health < 0)
+        {
+            Die();
+            return;
+        }
+        StartCoroutine(DamageFlash());
+
+        if(aiType == AIType.Passive)
+        {
+            SetState(AIState.Fleeing);
+        }
+    }
+
+    void Die()
+    {
+        // get a random drop
+        int randomDrop = Random.Range(0, dropOnDeath.Length);
+        // instantiate the drop
+        Instantiate(dropOnDeath[randomDrop].dropPrefab, transform.position, Quaternion.identity);
+        
+        Destroy(gameObject);
+
+    }
+
+    IEnumerator DamageFlash()
+    {
+        for (int i = 0; i < meshRenderers.Length; i++)
+        {
+            meshRenderers[i].material.color = new Color(1.0f, 0.6f, 0.6f);
+
+        }
+        yield return new WaitForSeconds(0.1f);
+        for (int i = 0; i < meshRenderers.Length; i++)
+        {
+            meshRenderers[i].material.color = Color.white;
+        }
+    }
 }
