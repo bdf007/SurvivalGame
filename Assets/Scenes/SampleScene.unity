@@ -1751,6 +1751,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain
       objectReference: {fileID: 0}
+    - target: {fileID: 1364076815127437966, guid: c5f95282567d836468a4b9a3e7bdcaaa, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6014684558238675576, guid: c5f95282567d836468a4b9a3e7bdcaaa, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
