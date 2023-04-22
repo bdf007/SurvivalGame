@@ -59,6 +59,12 @@ public class NPC : MonoBehaviour
         //meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
     }
 
+    private void Start()
+    {
+        SetState(AIState.Wandering);
+    }
+
+
     private void Update()
     {
 
@@ -83,7 +89,11 @@ public class NPC : MonoBehaviour
 
     void PassiveUpdate()
     {
-
+        if(aiState == AIState.Wandering && agent.remainingDistance < 0.1f)
+        {
+            SetState(AIState.Idle);
+            Invoke("WanderToNewLocation", Random.Range(minWanderWaitTime, maxWanderWaitTime));
+        }
     }
 
     void AttackingUpdate()
@@ -135,6 +145,29 @@ public class NPC : MonoBehaviour
             return;
         }
 
+        SetState(AIState.Wandering);
+        agent.SetDestination(GetWanderLocation());
+
+    }
+
+    Vector3 GetWanderLocation()
+    {
+        NavMeshHit hit;
+        NavMesh.SamplePosition(transform.position + Random.insideUnitSphere * Random.Range(minWanderDistance, maxWanderDistance), out hit, maxWanderDistance, NavMesh.AllAreas);
+
+        int i = 0;
+
+        while (Vector3.Distance(transform.position, hit.position) < detectDistance)
+        {
+            NavMesh.SamplePosition(transform.position + Random.insideUnitSphere * Random.Range(minWanderDistance, maxWanderDistance), out hit, maxWanderDistance, NavMesh.AllAreas);
+            i++;
+            if (i == 30)
+            {
+                break;
+            }
+        }
+
+        return hit.position;
     }
 
 }
