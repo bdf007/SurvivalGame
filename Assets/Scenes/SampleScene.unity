@@ -5696,7 +5696,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 684787453}
         m_TargetAssemblyTypeName: BuildingRecipeUI, Assembly-CSharp
-        m_MethodName: OnClieckButton
+        m_MethodName: OnClickButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6553,7 +6553,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 782297469}
         m_TargetAssemblyTypeName: BuildingRecipeUI, Assembly-CSharp
-        m_MethodName: OnClieckButton
+        m_MethodName: OnClickButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13287,7 +13287,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1605117592}
         m_TargetAssemblyTypeName: BuildingRecipeUI, Assembly-CSharp
-        m_MethodName: OnClieckButton
+        m_MethodName: OnClickButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15143,7 +15143,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1907897456}
         m_TargetAssemblyTypeName: BuildingRecipeUI, Assembly-CSharp
-        m_MethodName: OnClieckButton
+        m_MethodName: OnClickButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

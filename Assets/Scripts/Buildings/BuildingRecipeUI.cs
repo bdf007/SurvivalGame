@@ -58,9 +58,17 @@ public class BuildingRecipeUI : MonoBehaviour
         backgroundImage.color = canBuild ? canBuildColor : cantBuildColor;
     }
 
-    public void OnClieckButton()
+    public void OnClickButton()
     {
-
+        if(canBuild)
+        {
+            EquipBuildingKit.instance.SetNewBuildingRecipe(recipe);
+        }
+        else
+        {
+            PlayerController.instance.ToggleCursor(false);
+            EquipBuildingKit.instance.buildingWindow.SetActive(false);
+        }
     }
         
  }
