@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
     public ItemSlotUI[] uiSlots;
     public ItemSlot[] slots;
 
-    public GameObject invetoryWindow;
+    public GameObject inventoryWindow;
     public Transform dropPosition;
 
     [Header("Selected item")]
@@ -48,7 +48,7 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        invetoryWindow.SetActive(false);
+        inventoryWindow.SetActive(false);
         slots = new ItemSlot[uiSlots.Length];
 
         // initialize the slots
@@ -75,15 +75,15 @@ public class Inventory : MonoBehaviour
     // opens or closes the inventory
     public void Toggle()
     {
-        if(invetoryWindow.activeInHierarchy)
+        if(inventoryWindow.activeInHierarchy)
         {
-            invetoryWindow.SetActive(false);
+            inventoryWindow.SetActive(false);
             onCloseInventory.Invoke();
             playerController.ToggleCursor(false);
         }
         else
         {
-            invetoryWindow.SetActive(true);
+            inventoryWindow.SetActive(true);
             onOpenInventory.Invoke();
             ClearSelectedItemWindow();
             playerController.ToggleCursor(true);
@@ -92,7 +92,7 @@ public class Inventory : MonoBehaviour
 
     public bool IsOpen()
     {
-        return invetoryWindow.activeInHierarchy;
+        return inventoryWindow.activeInHierarchy;
     }
 
     // adds the requested item to the player's inventory
@@ -269,6 +269,7 @@ public class Inventory : MonoBehaviour
         UpdateUI();
 
         SelectecItem(selectedItemIndex);
+        Toggle();
     }
 
     void UnEquip(int index)

@@ -16,6 +16,14 @@ public class PlayerNeeds : MonoBehaviour, IDamageable
 
     public UnityEvent onTakeDamage;
 
+    // singleton
+    public static PlayerNeeds instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         // set the starting values
