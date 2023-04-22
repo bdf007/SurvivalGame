@@ -61,7 +61,80 @@ public class NPC : MonoBehaviour
 
     private void Update()
     {
-        agent.SetDestination(PlayerController.instance.transform.position);
+
+        // get player distance
+        playerDistance = Vector3.Distance(transform.position, PlayerController.instance.transform.position);
+        switch (aiState)
+        {
+            case AIState.Idle:
+                PassiveUpdate(); 
+                break;
+            case AIState.Wandering:
+                PassiveUpdate();
+                break;
+            case AIState.Attacking:
+                AttackingUpdate();
+                break;
+            case AIState.Fleeing:
+                FleeingUpdate();
+                break;
+        }
+    }
+
+    void PassiveUpdate()
+    {
+
+    }
+
+    void AttackingUpdate()
+    {
+
+    }
+
+    void FleeingUpdate()
+    {
+
+    }
+
+    void SetState(AIState newState)
+    {
+        aiState = newState;
+
+        switch(aiState)
+        {
+            case AIState.Idle:
+                {
+                    agent.speed = walkSpeed;
+                    agent.isStopped = true;
+                    break;
+                }
+            case AIState.Wandering:
+                {
+                    agent.speed = walkSpeed;
+                    agent.isStopped = false;
+                    WanderToNewLocation();
+                    break;
+                }
+            case AIState.Attacking:
+                {
+                    agent.speed = runSpeed;
+                    break;
+                }
+            case AIState.Fleeing:
+                {
+                    agent.speed = runSpeed;
+                    break;
+                }
+        }
+    }
+
+    void WanderToNewLocation()
+    {
+        if(aiState != AIState.Idle)
+        {
+            return;
+        }
+
     }
 
 }
