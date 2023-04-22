@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8868566404146282409
 Transform:
   m_ObjectHideFlags: 0
@@ -45,7 +45,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.990566, g: 0.8575461, b: 0, a: 1}
   m_Intensity: 4
-  m_Range: 7
+  m_Range: 3
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -111,7 +111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6902802266623175644
 Transform:
   m_ObjectHideFlags: 0
@@ -4985,6 +4985,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b7d4758fae0114eb2156ab69651515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particle: {fileID: 4688114692146512809}
+  lightFire: {fileID: 3750808788214596663}
+  damage: 5
+  damageRate: 0.3
 --- !u!1001 &7550358904971123379
 PrefabInstance:
   m_ObjectHideFlags: 0

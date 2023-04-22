@@ -1456,7 +1456,7 @@ MonoBehaviour:
   - {fileID: 1249444085}
   - {fileID: 232610633}
   - {fileID: 2048641531}
-  invetoryWindow: {fileID: 1233103247}
+  inventoryWindow: {fileID: 1233103247}
   dropPosition: {fileID: 2056923875}
   selectedItemName: {fileID: 852208747}
   selectedItemDescription: {fileID: 350307615}
