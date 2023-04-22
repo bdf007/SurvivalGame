@@ -536,7 +536,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e7e39af5a5f7d3748b9dfd6c9b698576, type: 2}
   - {fileID: 11400000, guid: 1bf1c9cd0c33c2d42ad37da0404830f5, type: 2}
   - {fileID: 11400000, guid: b274d5d8c239d9941a37ccc2479f92ec, type: 2}
-  aiType: 0
+  aiType: 1
   detectDistance: 5
   safeDistance: 8
   minWanderDistance: 2
@@ -8283,7 +8283,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e7e39af5a5f7d3748b9dfd6c9b698576, type: 2}
   - {fileID: 11400000, guid: 1bf1c9cd0c33c2d42ad37da0404830f5, type: 2}
   - {fileID: 11400000, guid: b274d5d8c239d9941a37ccc2479f92ec, type: 2}
-  aiType: 0
+  aiType: 2
   detectDistance: 5
   safeDistance: 8
   minWanderDistance: 2
