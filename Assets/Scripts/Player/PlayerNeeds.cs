@@ -83,7 +83,7 @@ public class PlayerNeeds : MonoBehaviour, IDamageable
         sleep.Remove(amount);
     }
 
-    public void TakePhysicalDamage(float amount)
+    public void TakePhysicalDamage(int amount)
     {
         health.Remove(amount);
         onTakeDamage?.Invoke();
@@ -126,5 +126,5 @@ public class Need
 
 public interface IDamageable
 {
-    void TakePhysicalDamage(float damaheAmount);
+    void TakePhysicalDamage(int damageAmount);
 }

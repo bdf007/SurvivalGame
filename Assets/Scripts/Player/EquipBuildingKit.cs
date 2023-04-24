@@ -37,10 +37,8 @@ public class EquipBuildingKit : Equip
 
     public override void OnAttackInput()
     {
-        Debug.Log("OnAttackInput");
         if(curRecipe == null || curBuildingPreview == null || !canPlace)
         {
-            Debug.Log("OnAttackInput - return");
             return;
         }
 
