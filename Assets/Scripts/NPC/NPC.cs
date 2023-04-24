@@ -124,7 +124,6 @@ public class NPC : MonoBehaviour, IDamageable
             {
                 lastAttackTime = Time.time;
                 PlayerController.instance.GetComponent<IDamageable>().TakePhysicalDamage(damage);
-                anim.SetBool("Moving", false);
                 anim.SetTrigger("Attack");
                 
             }
