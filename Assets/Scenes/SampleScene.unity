@@ -2123,6 +2123,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c5f95282567d836468a4b9a3e7bdcaaa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1364076815127437966, guid: c5f95282567d836468a4b9a3e7bdcaaa, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -13578,7 +13582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8717455147745219158, guid: d7e9b3a34d719b545b01303fdabbb382, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: 8717455147745219158, guid: d7e9b3a34d719b545b01303fdabbb382, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16554,12 +16558,24 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4404305932339832966, guid: de04204f677b0b44d989dc6071c64295, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404305932339832966, guid: de04204f677b0b44d989dc6071c64295, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404305932339832966, guid: de04204f677b0b44d989dc6071c64295, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404305932339832966, guid: de04204f677b0b44d989dc6071c64295, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.78
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4404305932339832966, guid: de04204f677b0b44d989dc6071c64295, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.02
+      value: 6.17
       objectReference: {fileID: 0}
     - target: {fileID: 4404305932339832966, guid: de04204f677b0b44d989dc6071c64295, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16596,6 +16612,10 @@ PrefabInstance:
     - target: {fileID: 4404305932339833210, guid: de04204f677b0b44d989dc6071c64295, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404305932339833210, guid: de04204f677b0b44d989dc6071c64295, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de04204f677b0b44d989dc6071c64295, type: 3}
